@@ -17,15 +17,16 @@ services:
       - "4318:4318" # OTLP/HTTP
 
   api-gateway:
-    build:
-      context: './docker/kong'
+    image: kong:3.9
     environment:
       KONG_DATABASE: 'off'
       KONG_ADMIN_LISTEN: '0.0.0.0:8001'
       KONG_ADMIN_GUI_URL: http://localhost:8002
-      ORDERS_SERVICE_URL: http://host.docker.internal:3333
+      KONG_DECLARATIVE_CONFIG: '/kong/config.template.yaml'
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    volumes:
+      - ./docker/kong/config.template.yaml:/kong/config.template.yaml
     ports:
       - "8000:8000" # Proxy (API)
       - "8001:8001" # API (Admin)

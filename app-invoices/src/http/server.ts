@@ -19,7 +19,7 @@ app.setValidatorCompiler(validatorCompiler);
 app.register(fastifyCors, { origin: "*" });
 
 app.get("/health", () => {
-	console.log("bateu");
+	console.log("bateu no invoices");
 	return "OK";
 });
 

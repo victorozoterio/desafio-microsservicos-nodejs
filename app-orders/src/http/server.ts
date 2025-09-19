@@ -26,6 +26,7 @@ app.setValidatorCompiler(validatorCompiler);
 app.register(fastifyCors, { origin: "*" });
 
 app.get("/health", () => {
+	console.log("bateu no orders");
 	return "OK";
 });
 
