@@ -2,16 +2,24 @@ _format_version: "3.0"
 _transform: true
 
 services:
-  - name: orders
-    url: ${ORDERS_SERVICE_URL}
-    path: /
-    routes:
-      - name: api-orders
-        protocols:
-          - http
-          - https
-        paths:
-          - /orders
+- name: orders
+    url: http://host.docker.internal:3333
+    protocol: http
+    host: host.docker.internal
+    port: 3333
+    path: /orders
+
+# services:
+#   - name: orders
+#     url: ${ORDERS_SERVICE_URL}
+#     path: /
+#     routes:
+#       - name: api-orders
+#         protocols:
+#           - http
+#           - https
+#         paths:
+#           - /orders
 
   # - name: invoices
   #   url: http://host.docker.internal:3334
